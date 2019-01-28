@@ -60,9 +60,7 @@
 	<![endif]-->
 	<meta name="build" content="63-BUILD2470 - 30.09.2013 11:10 - com" />
 
-	<style type="text/css">
-		hr {background-color:#CCC;border:0;height:1px;margin:10px 0;}
-	</style>
+
 
 </head>
 

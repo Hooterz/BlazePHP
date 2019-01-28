@@ -1,4 +1,9 @@
 <?php
+if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
+		header("Location: /banned");
+		die();
+}
+
 $newsItem = 0;
 $html = '';
 $data = $this->database->query("SELECT `id`,`title`, `image`, `shortstory`, `longstory` FROM `cms_news` WHERE  `is_live` = '1' ORDER BY `id` DESC LIMIT 18", []);

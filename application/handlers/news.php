@@ -1,4 +1,9 @@
 <?php
+if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
+		header("Location: /banned");
+		die();
+}
+
     $id = explode('-', $this->template->getRouter()->getExtra(2))[0];
 
 		if ($this->database->num_rows("SELECT null FROM `cms_news` WHERE `id` = ? AND `is_live` = '1' LIMIT 1", [$id]) == 0) {

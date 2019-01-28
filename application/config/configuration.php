@@ -10,6 +10,7 @@ $conf = (object)array(
   'pixels' => 500,
   'motto' => 'Hello, im a new user!',
   'figure' => 'hd-180-1.ch-210-66.lg-270-82.sh-290-91.hr-100',
+  'maint' => false,
     #Database
   'host' => 'localhost',
   'port' => '3306',

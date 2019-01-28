@@ -84,13 +84,14 @@ class Core {
   }
 
   public function isBanned($value)
-	{
-		if($this->database->rowCount("SELECT null FROM bans WHERE value = ? LIMIT 1", [$value]) > 0)
-		{
-			return true;
-		}
-		return false;
-	}
+  {
+    $query = $this->database->query('SELECT null FROM `bans` WHERE `value` = ? LIMIT 1', [$value]);
+    if($query->rowCount() > 0)
+    {
+      return true;
+    }
+    return false;
+  }
 
 }
 ?>

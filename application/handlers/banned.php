@@ -1,5 +1,5 @@
 <?php
-$getBan = $this->database->query("SELECT * FROM `bans` WHERE `value` = ? OR `value` = ?", [$_SESSION['userid']['username'],$_SERVER['REMOTE_ADDR']]);
+$getBan = $this->database->query("SELECT * FROM `bans` WHERE `value` = ? OR `value` = ?", [$this->user->username,$_SERVER['REMOTE_ADDR']]);
 if($getBan->rowCount() == 0)
 {
 	header("Location: /me");
@@ -10,7 +10,7 @@ $getInfo = $getBan->fetch(PDO::FETCH_OBJ);
 if(time() > $getInfo->expire)
 {
 	$this->database->query("INSERT INTO `bans_expired` SELECT * FROM `bans` WHERE `id` = ? AND `id` IN (SELECT `id` FROM `bans`);", [$getInfo->id]);
-  $this->database->query("DELETE FROM `bans` WHERE `value` = ? OR `value` = ?", [$_SESSION['userid']['username'], $_SERVER['REMOTE_ADDR']]) or die(mysql_error());
+  $this->database->query("DELETE FROM `bans` WHERE `value` = ? OR `value` = ?", [$this->user->username, $_SERVER['REMOTE_ADDR']]) or die(mysql_error());
 	header("Location: /me");
 	exit;
 }
@@ -21,7 +21,7 @@ $this->template->addTemplate('addeddate', date("dS \of F Y - h:ia (T)", $getInfo
 $this->template->addTemplate('expire', date("dS \of F Y - h:ia (T)", $getInfo->expire));
 
 $logs = '';
-$getLogs = $this->database->query("SELECT `message`,`timestamp` FROM `chatlogs` WHERE `user_id` = ? ORDER BY `id` DESC LIMIT 10", [$_SESSION['userid']['id']]);
+$getLogs = $this->database->query("SELECT `message`,`timestamp` FROM `chatlogs` WHERE `user_id` = ? ORDER BY `id` DESC LIMIT 10", [$this->user->id]);
 if ($getLogs->rowCount() > 0) {
   $logs .= '<table width="100%">
 
@@ -44,7 +44,7 @@ if ($getLogs->rowCount() > 0) {
 $this->template->addTemplate('chatlogs', $logs);
 
 $messenger = '';
-$getLogs = $this->database->query("SELECT `message`,`timestamp` FROM `chatlogs_console` WHERE `from_id` = ? ORDER BY `id` DESC LIMIT 10", [$_SESSION['userid']['id']]);
+$getLogs = $this->database->query("SELECT `message`,`timestamp` FROM `chatlogs_console` WHERE `from_id` = ? ORDER BY `id` DESC LIMIT 10", [$this->user->id]);
 if ($getLogs->rowCount() > 0) {
   $messenger .= '<table width="100%">
 
@@ -67,7 +67,7 @@ if ($getLogs->rowCount() > 0) {
 $this->template->addTemplate('messenger', $messenger);
 
 $ass = '';
-$getInfo = $this->database->query("SELECT * FROM `user_info` WHERE `user_id` = ? LIMIT 1", [$_SESSION['userid']['id']]);
+$getInfo = $this->database->query("SELECT * FROM `user_info` WHERE `user_id` = ? LIMIT 1", [$this->user->id]);
 if ($getInfo->rowCount() > 0) {
 
   $info = $getInfo->fetch(PDO::FETCH_OBJ);

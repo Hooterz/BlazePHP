@@ -1,4 +1,26 @@
 <?php
+if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
+		header("Location: /banned");
+		die();
+}
+
+$maint = '';
+if(!$this->config->maint)
+  {
+		 $maint = '<div class="enter-hotel-btn">
+     <div class="open enter-btn" style="padding-top: -10px;">
+     <a href="/client" target="26530fff566f9e67da99560b7fe8da6d71d46391" onclick="HabboClient.openOrFocus(this); return false;">Enter '.$this->config->hotelname.' Hotel<i></i></a>
+     <b></b>
+     </div>';
+  } else {
+		$maint = '<div class="enter-hotel-btn">
+    <div class="closed enter-btn">
+    <span>'.$this->config->hotelname.' is offline.</span>
+    <b></b>
+    </div>';
+  }
+$this->template->addTemplate('enterhotel', $maint);
+
 $newsItem = 0;
 $html = '';
 $data = $this->database->query("SELECT `id`,`title`, `image`, `shortstory`, `longstory` FROM `cms_news` WHERE  `is_live` = '1' ORDER BY `id` DESC LIMIT 18", []);

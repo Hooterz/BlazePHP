@@ -107,12 +107,7 @@ require_once ('extra/header.php');
             							<div class="content">{lastSignedIn}</div>
             						</div>
 
-                        <div class="enter-hotel-btn">
-<div class="open enter-btn">
-        <a href="/client" target="38c35fe8bac3cff9c706f467ca3909ac2e5d7f52" onclick="HabboClient.openOrFocus(this); return false;">Enter {hotelname}<i></i></a>
-    <b></b>
-</div>
-</div>
+                      {enterhotel}
 
                                     </div>
                                 </div>
@@ -124,23 +119,7 @@ require_once ('extra/header.php');
                         document.observe("dom:loaded", function() { PromoSlideShow.init(); });
                     </script>
 
-                    <div id="column1" class="column">
-<div class="habblet-container ">
-<div class="cbb clearfix red">
-
-</div>
-</div>
-</div>
-
-<div id="column2" class="column">
-					<div class="habblet-container">
-					<div class="cbb clearfix red">
-
-					</div>
-					</div>
-
-                    </div>
+                  
        <script type="text/javascript">if (!$(document.body).hasClassName('process-template')) { Rounder.init(); }</script>
 
                     <?php require_once ('extra/footer.php'); ?>
-                    <?php require_once ('extra/checkban.php'); ?>

@@ -1,4 +1,8 @@
 <?php
+if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
+		header("Location: /banned");
+		die();
+}
 
 function bd_nice_number($n) {
     $n = (0+str_replace(",","",$n));

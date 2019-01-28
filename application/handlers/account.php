@@ -1,4 +1,9 @@
 <?php
+if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
+		header("Location: /banned");
+		die();
+}
+
 if(isset($_POST['acc_motto'])){
   if(strlen($_POST['acc_motto']) > 30){
     $error = 'Motto cant be longer than 30 characters!';

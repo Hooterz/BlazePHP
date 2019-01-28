@@ -1,4 +1,9 @@
 <?php
+if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
+		header("Location: /banned");
+		die();
+}
+
 $staff = '';
 $getRanks = $this->database->query("SELECT `id`,`name`,`title`,`badgeid`,`tab_colour` FROM `ranks` WHERE `id` > 1 AND `hidden` = '0' ORDER BY id DESC", []);
 while ($Ranks = $getRanks->fetch(PDO::FETCH_OBJ))
