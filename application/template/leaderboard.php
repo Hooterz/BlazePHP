@@ -142,17 +142,5 @@ width:90%;
 			</div>
 		</div>
 
-		<div id="column" class="column" style="width:192px;">
-			<div class="habblet-container ">
-				<div class="cbb clearfix red ">
-					<h2 class="title"><span style="float: left;">Most Online Time</span></h2>
-					<div align='left'>
-
-           {toponlinetime}
-
-					</div>
-				</div>
-			</div>
-		</div>
 
 <?php require_once ('extra/footer.php'); ?>

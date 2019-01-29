@@ -1,6 +1,6 @@
 <?php
 if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
-		header("Location: /banned");
+		$this->Redirect('banned');
 		die();
 }
 

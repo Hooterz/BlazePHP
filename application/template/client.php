@@ -10,36 +10,34 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script type="text/javascript" src="{imagePath}/js/habboapi.js"></script>
 		<script type="text/javascript">
-			var flashvars = {
-				"connection.info.host":"94.23.1.25",
-				"connection.info.port":"804",
-				"client.reload.url": "https://bliss.gg/clienterror",
-				"client.fatal.error.url": "https://bliss.gg/clienterror",
-				"client.connection.failed.url": "https://bliss.gg/clienterror",
-				"logout.url": "https://bliss.gg/me",
-				"logout.disconnect.url": "https://bliss.gg/me",
-				"url.prefix":"https://bliss.gg",
-				"client.starting":"Please wait! {hotelname} is starting up.",
-				"has.identity":"1",
-				"client.starting.revolving":"Time is an illusion. Loading time doubly so./All the relevant elves are on break. Please wait../It looks like you're waiting for a website to load../Plank from Ed, Edd. 'n' Eddy was my first cartoon crush./We won't piss about for too much longer./Spinning up the hamster../Programming the flux capacitor../Shovelling coal into the server..",
-				"spaweb":"1",
-				"client.notify.cross.domain":"1",
-				"unique_habbo_id":"hhus-10",
-				"client.allow.cross.domain":"1",
-				"nux.lobbies.enabled":"false",
-				"flash.client.origin":"popup",
-				"sso.ticket":"bliss-373/77504abd32916659381f547449af26c7e",
-				"account_id":"10",
-				"productdata.load.url":"https://game.bliss.gg/gamedata/productdata.txt?1354274353",
-				"furnidata.load.url":"https://game.bliss.gg/gamedata/furnidata.xml?1354274353",
-				"external.texts.txt":"https://game.bliss.gg/gamedata/external_flash_texts.txt?1548577324",
-				"external.variables.txt":"https://game.bliss.gg/gamedata/external_variables.txt?1548577324",
-				"external.figurepartlist.txt":"https://game.bliss.gg/gamedata/figuredata.xml?1354274353",
-				"external.override.texts.txt":"https://game.bliss.gg/gamedata/override/external_flash_override_texts.txt?1548577324",
-				"external.override.variables.txt":"https://game.bliss.gg/gamedata/override/external_override_variables.txt?1548577324",
-				"flash.client.url":"https://game.bliss.gg/gordon/PRODUCTION/",
-				"processlog.enabled":"0"
-			};
+    var BaseUrl = "{url}/swfs/gordon/PRODUCTION-201701242205-837386173/";
+
+		var flashvars =
+					{
+							"client.allow.cross.domain" : "1",
+							"client.notify.cross.domain" : "0",
+							"connection.info.host" : "ddosguard.xabbo.me",
+							"connection.info.port" : "1232",
+							"site.url" : "{url}",
+							"url.prefix" : "{url}",
+							"client.reload.url" : "{url}/clienterror",
+							"client.fatal.error.url" : "{url}/clienterror",
+							"client.connection.failed.url" : "{url}/clienterror",
+							"external.variables.txt" : "{url}/swfs/gamedata/external_variables.txt",
+							"external.texts.txt" : "{url}/swfs/gamedata/external_flash_texts.txt",
+							"external.override.texts.txt" : "{url}/swfs/gamedata/override/external_flash_override_texts.txt",
+							"external.override.variables.txt" : "{url}/swfs/gamedata/override/external_override_variables.txt",
+							"external.figurepartlist.txt" : "{url}/swfs/gamedata/figuredata.xml",
+							"productdata.load.url" : "{url}/swfs/gamedata/productdata.txt",
+							"furnidata.load.url" : "{url}/swfs/gamedata/furnidata.xml",
+							"use.sso.ticket" : "1",
+							"sso.ticket" : "{sso}",
+							"client.starting" : "Please wait! {hotelName} is starting up.",
+							"processlog.enabled" : "0",
+							"flash.client.url" : BaseUrl,
+							"client.starting.revolving" : "For science, you monster/Loading funny message... please wait./Would you like fries with that?/Follow the yellow duck./Time is just an illusion./Are we there yet?!/I like your t-shirt./Look left. Look right. Blink twice. Ta da!/It\'s not you, it\'s me./Shhh! I\'m trying to think here./Loading pixel universe.",
+							"flash.client.origin" : "popup"
+					};
 
 			window.FlashExternalInterface.disconnect = function() {
 				window.location.href = "/clienterror";
@@ -49,14 +47,14 @@
 				window.location.href = "/logout";
 			};
 
-			var params = {
-				"base" : "https://game.bliss.gg/gordon/PRODUCTION/",
-				"allowScriptAccess" : "always",
-				"menu" : "false",
-				"wmode": "opaque"
-			};
+			var params =
+            {
+                "base" : BaseUrl + "/",
+                "allowScriptAccess" : "always",
+                "menu" : "false"                
+            };
 
-			swfobject.embedSWF('https://game.bliss.gg/Blissness.swf?1252304', 'client', '100%', '100%', '11.1.0', '//habboo-a.akamaihd.net/habboweb/63_1d5d8853040f30be0cc82355679bba7c/10404/web-gallery/flash/expressInstall.swf', flashvars, params, null, null);
+			swfobject.embedSWF(BaseUrl + "/Habbo.swf?123213", "client", "100%", "100%", "10.0.0", "{url}/swfs/gordon/PRODUCTION-201701242205-837386173/expressInstall.swf", flashvars, params, null);
 		</script>
 	<body>
 		<div id="client">

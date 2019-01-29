@@ -82,6 +82,12 @@ require_once ('extra/header.php');
 			</div>
 
             <div id="container">
+              <br>
+              <div class="alert">
+  <center>
+  Xabbo is currently in <b>BETA</b> stages. For more information please read <a style="color: #183894;" href="{url}/news/1-BETA">this</a> article.
+</center></div>
+
                   <div id="content" style="position: relative" class="clearfix">
 
             <div style="margin-top:5px;margin-bottom:5px;margin-left:20px;" >
@@ -119,7 +125,7 @@ require_once ('extra/header.php');
                         document.observe("dom:loaded", function() { PromoSlideShow.init(); });
                     </script>
 
-                  
+
        <script type="text/javascript">if (!$(document.body).hasClassName('process-template')) { Rounder.init(); }</script>
 
                     <?php require_once ('extra/footer.php'); ?>

@@ -1,4 +1,10 @@
 <?php
+/*
+		Orbit CMS
+		Efficient Habbo Hotel Retro Management System
+		Coded by Sebastian Escudero ft. Josh Satherley
+*/
+
 class Core {
 
   private $database;
@@ -25,6 +31,7 @@ class Core {
       $this->template->addTemplate('lastSignedIn', date('m/d/Y',$this->user->lastOn));
       $this->template->addTemplate('email', $this->user->email);
       $this->template->addTemplate('rank', $this->user->rank);
+      $this->template->addTemplate('sso', $this->user->auth_ticket);
     }else{
       $this->user = null;
     }
@@ -37,7 +44,7 @@ class Core {
   }
 
   private function hash($key){
-    return sha1(md5($key));
+    return password_hash($key, PASSWORD_BCRYPT, array('cost' => 12));
   }
 
   private function onlineCount(){
@@ -50,13 +57,18 @@ class Core {
   }
 
   public function Login($username, $password){
-    $query = $this->database->query('SELECT `id` FROM `users` WHERE `username` = ? AND `password` = ? LIMIT 1;', [$username, $this->hash($password)]);
+    $query = $this->database->query('SELECT * FROM `users` WHERE `username` = ? LIMIT 1', [$username]);
     if($query->rowCount() == 0){
       return false;
     }
-    $_SESSION['userid'] = $query->fetch(PDO::FETCH_OBJ)->id;
-    $this->database->query('UPDATE `users` SET `last_online` = ?, `ip_last` = ? WHERE `id` = ?', [time(), $this->ip, $_SESSION['userid']]);
-    return true;
+    while($hash = $query->fetch(PDO::FETCH_OBJ)){
+    if(password_verify($password, $hash->password)){
+       $_SESSION['userid'] = $hash->id;
+       $this->createSSO();
+       $this->database->query('UPDATE `users` SET `last_online` = ?, `ip_last` = ? WHERE `id` = ?', [time(), $this->ip, $_SESSION['userid']]);
+       return true;
+     }
+    }
   }
 
   public function spitRequest(){
@@ -92,6 +104,13 @@ class Core {
     }
     return false;
   }
+
+  public function createSSO()
+	{
+		$sessionKey = 'OrbitCMS-'.substr(sha1(time() * rand(9,9999999) + $_SESSION['userid']).'-'.rand(9,9999999).'-'.rand(9,9999999).'-'.rand(9,9999999),0,33);
+    $this->database->query('UPDATE `users` SET `auth_ticket` = ? WHERE `id` = ?', [$sessionKey, $_SESSION['userid']]);
+		unset($sessionKey);
+	}
 
 }
 ?>

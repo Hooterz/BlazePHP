@@ -2,6 +2,7 @@
 if($this->user !== null){
   $this->Redirect('me');
 }
+
 if(isset($_POST['username']) && isset($_POST['password'])){
   $result = $this->Login($_POST['username'], $_POST['password']);
   if($result){

@@ -1,6 +1,6 @@
 <?php
 if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
-		header("Location: /banned");
+		$this->Redirect('banned');
 		die();
 }
 
@@ -15,7 +15,7 @@ $itemsStuffs = '; display: none;';
 }else{ $itemsStuffs = ''; }
 
 $html .= '
-<div class="promo-container" style="background-image: url('.$this->config->imagePath.'/web_promos/'.$newsData->image.')'.$itemsStuffs.'">
+<div class="promo-container" style="background-image: url('.$this->config->imagePath.'/web_promo/'.$newsData->image.')'.$itemsStuffs.'">
 <div class="promo-content-container">
 <div class="promo-content">
  <div class="title">'.$newsData->title.'</div>
@@ -36,7 +36,7 @@ $this->template->addTemplate('news', $html);
  $rooms = '';
  $GetRooms = $this->database->query("SELECT `users_now`,`caption` FROM `rooms` ORDER BY `users_now` DESC LIMIT 10", []);
  $odd = false;
- while ($Room = $GetRooms->fetch(PDO::FETCH_ASSOC)) {
+ while ($Room = $GetRooms->fetch(PDO::FETCH_OBJ)) {
     if($odd) {
 		$colour = "odd";
 		$odd = false;

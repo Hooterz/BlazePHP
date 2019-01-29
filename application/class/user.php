@@ -1,4 +1,10 @@
 <?php
+/*
+		Orbit CMS
+		Efficient Habbo Hotel Retro Management System
+		Coded by Sebastian Escudero ft. Josh Satherley
+*/
+
 class User {
 
   private $database;
@@ -11,6 +17,7 @@ class User {
   public $lastOn;
   public $password;
   public $rank;
+  public $auth_ticket;
 
   public function __construct($userid, $db){
     $this->database = $db;
@@ -23,6 +30,7 @@ class User {
     $this->lastOn = $user['last_online'];
     $this->password = $user['password'];
     $this->rank = $user['rank'];
+    $this->auth_ticket = $user['auth_ticket'];
   }
 
   public function updateVar($key, $value){

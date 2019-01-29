@@ -1,6 +1,6 @@
 <?php
 if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
-		header("Location: /banned");
+		$this->Redirect('banned');
 		die();
 }
 
@@ -40,13 +40,13 @@ while ($Ranks = $getRanks->fetch(PDO::FETCH_OBJ))
           <td valign="top">
             <td style="font-size: 90%; margin: 10px 0px 0px 0px;">
               <p><a href="#"/><strong>' .$member->username . '</strong></a></p>
-              <p style="padding: 0px;"><img src="http://localhost/images/motto.gif"/> ' . $member->motto . '</p>
-              <p><img src="http://localhost/images/login.gif"/> '. date("jS \of M - h:ia T", $member->last_online) .'</p>
+              <p style="padding: 0px;"><img src="'.$this->config->imagePath.'/motto.gif"/> ' . $member->motto . '</p>
+              <p><img src="'.$this->config->imagePath.'/login.gif"/> '. date("jS \of M - h:ia T", $member->last_online) .'</p>
             </td>
           </td>
-          <td valign="top" style="float: right;">' . (($member->online == "1") ? '<img src="http://localhost/images/online.gif"/>': '<img src="http://localhost/images/habbo_offline_big.gif"/>') . '
+          <td valign="top" style="float: right;">' . (($member->online == "1") ? '<img src="'.$this->config->imagePath.'/online.gif"/>': '<img src="'.$this->config->imagePath.'/habbo_offline_big.gif"/>') . '
           <br />
-          <img src="http://localhost/swfs/c_images/album1584/' . $Ranks->badgeid . '.gif" title="' . substr($Ranks->name, 0, -1) . '">
+          <img src="'.$this->config->badgeImagePath.'/' . $Ranks->badgeid . '.gif" title="' . substr($Ranks->name, 0, -1) . '">
           </td>
         </tr>
 

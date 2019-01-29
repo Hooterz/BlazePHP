@@ -1,7 +1,12 @@
 <?php
+/*
+		Orbit CMS
+		Efficient Habbo Hotel Retro Management System
+		Coded by Sebastian Escudero ft. Josh Satherley
+*/
 
 $conf = (object)array(
-  'hotelname' => 'Habboon',
+  'hotelname' => 'Xabbo',
   'url' => 'http://localhost',
   'imagePath' => 'http://localhost/images',
   'habboImagerPath' => 'https://www.habbo.com.br/habbo-imaging/avatarimage?hb=img&figure=',
@@ -16,7 +21,7 @@ $conf = (object)array(
   'port' => '3306',
   'username' => 'root',
   'password' => 'tatis98',
-  'database' => 'habbeh'
+  'database' => 'xabbo'
 );
 
 ?>

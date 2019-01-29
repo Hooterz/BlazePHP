@@ -2,7 +2,7 @@
 $getBan = $this->database->query("SELECT * FROM `bans` WHERE `value` = ? OR `value` = ?", [$this->user->username,$_SERVER['REMOTE_ADDR']]);
 if($getBan->rowCount() == 0)
 {
-	header("Location: /me");
+	$this->Redirect('me');
 	exit;
 }
 
@@ -11,7 +11,7 @@ if(time() > $getInfo->expire)
 {
 	$this->database->query("INSERT INTO `bans_expired` SELECT * FROM `bans` WHERE `id` = ? AND `id` IN (SELECT `id` FROM `bans`);", [$getInfo->id]);
   $this->database->query("DELETE FROM `bans` WHERE `value` = ? OR `value` = ?", [$this->user->username, $_SERVER['REMOTE_ADDR']]) or die(mysql_error());
-	header("Location: /me");
+	$this->Redirect('me');
 	exit;
 }
 

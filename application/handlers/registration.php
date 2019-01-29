@@ -32,17 +32,12 @@
 	if(count($errors) !== 0){
 		$errors['empty_field_error_message'] = 'Hey, you forgot to fill me!';
 	}
+
 	$return = array(
 		"registrationErrors" => $errors,
 		"registrationMessages" => $messages);
 
 	if(count($errors) == 0) {
-
-    $checkAccounts = $this->database->query("SELECT null FROM `users` WHERE `ip_reg` = '".$_SERVER['REMOTE_ADDR']."' or `ip_last` = '".$_SERVER['REMOTE_ADDR']."'");
-	  if($this->database->num_rows($checkAccounts) >= 2) {
-		   echo '{"registrationCompletionRedirectUrl": '.$this->config->url.'"/clones"}';
-		   die();
-	  }
 
 		$this->addUser($_POST["registrationBean_username"],$this->hash($_POST['registrationBean_password']),$_POST["registrationBean_email"],$this->config->motto,$this->config->credits,$this->config->pixels,1, $this->config->figure, "M");
 		$this->Login($_POST["registrationBean_username"], $_POST['registrationBean_password']);

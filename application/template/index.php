@@ -50,9 +50,9 @@
 		<style type="text/css">
 		header #habbo-logo {
 			margin-top: -5px;
-      width: 144px;
-      height: 40px;
-			background-image: url('{imagePath}/logo1.png');
+      width: 130px;
+      height: 60px;
+			background-image: url('{imagePath}/logoxabbo.png');
 		}
 		</style>
 

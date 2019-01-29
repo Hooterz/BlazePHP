@@ -1,4 +1,10 @@
 <?php
+/*
+		Orbit CMS
+		Efficient Habbo Hotel Retro Management System
+		Coded by Sebastian Escudero ft. Josh Satherley
+*/
+
 require_once(__DIR__ . '/config/configuration.php');
 session_start();
 require_once(__DIR__ . '/class/core.php');

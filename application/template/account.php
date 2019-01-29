@@ -111,14 +111,6 @@ require_once ('extra/header.php');
 					<div class="box-content">
 							<form method="post" id="profileForm">
                 {success}{error}
-								<h3><b>Your motto</b></h3>
-								<p>Your motto is what other {hotelname} will see on your {hotelname} Home page and when clicking your {hotelname} in the Hotel.</p>
-								<p><label>Motto:<input type="text" name="acc_motto" size="32" maxlength="32" value="{motto}" id="avatarmotto"></label></p>
-								<hr>
-                <h3>Email Address</h3>
-								<p>Your email address is what you may need to reset your password incase you forget it.</p>
-								<p><label>Email:<input type="text" name="acc_email" size="32" value="{email}" id="avatarmotto"></p>
-                <hr>
                 <h3>Current Password</h3>
 								<p>Your current password is the password you use now.</p>
 								<p><label>Password:<input type="password" name="acc_old_password" value="" id="avatarmotto"></p>

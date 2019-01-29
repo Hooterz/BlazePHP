@@ -1,6 +1,6 @@
 <?php
 if ($this->isBanned($this->user->username) || $this->isBanned($_SERVER['REMOTE_ADDR'])) {
-		header("Location: /banned");
+		$this->Redirect('banned');
 		die();
 }
 
@@ -31,7 +31,7 @@ if ($newsItem != 1){
 $itemsStuffs = '; display: none;';
 }else{ $itemsStuffs = ''; }
 $html .= '
-<div class="promo-container" style="background-image: url('.$this->config->imagePath.'/web_promos/'.$newsData->image.')'.$itemsStuffs.'">
+<div class="promo-container" style="background-image: url('.$this->config->imagePath.'/web_promo/'.$newsData->image.')'.$itemsStuffs.'">
 <div class="promo-content-container">
 <div class="promo-content">
  <div class="title">'.$newsData->title.'</div>

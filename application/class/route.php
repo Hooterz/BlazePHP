@@ -1,4 +1,10 @@
 <?php
+/*
+		Orbit CMS
+		Efficient Habbo Hotel Retro Management System
+		Coded by Sebastian Escudero ft. Josh Satherley
+*/
+
 class Route {
 
   private $request;

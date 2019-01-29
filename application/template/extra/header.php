@@ -15,9 +15,9 @@ body {
 }
 
 #header h1 a, #header h1 span {
-  width: 144px;
-    height: 42px;
-	background-image: url('{imagePath}/logo1.png?');
+	width: 144px;
+height: 60px;
+	background-image: url('{imagePath}/logoxabbo.png?');
 }
 
 #header-container {
@@ -39,6 +39,15 @@ hr {
     border-bottom: 1px dashed #ccc;
     background: #999;
 }
+
+/* The alert message box */
+.alert {
+  background-color: #AED6F1;
+  color: white;
+  margin-bottom: 6px;
+  width: 733px;
+}
+
 
 #navi li strong,#navi li a{float:left;height:22px;padding:6px 16px 0 22px;background-repeat:no-repeat;background-image:url('{imagePath}/tags_blue.png');background-position:-10px -28px;color:#FFFFFF;font-weight:normal;text-decoration:none;max-width:290px;overflow:hidden;text-overflow:ellipsis;}
 #navi li span{float:left;height:28px;width:6px;background-repeat:no-repeat;background-image:url('{imagePath}/tags_blue.png');background-position:-4px -28px;}
